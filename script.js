@@ -1,5 +1,16 @@
+// svg-script
+
+
+
+
+
+
+// canvas script
 var c = document.getElementById('canvas');
 var ctx = c.getContext("2d");
+c.addEventListener('click', changeBackground);
+
+
 var top_x1 = 92;
 var top_x2 = 198;
 var top_y = 111;
@@ -7,8 +18,14 @@ var bottom_x1 = 199;
 var bottom_x2 = 91;
 var bottom_y = 250;
 
+var animationId;
+var bgColor = ["#87fbff", "#ff7142", "#95e364"];
+var i = 0;
+
 ctx.lineWidth = 1.5;
-drawScene();
+ctx.font = "25px  verdana";
+drawScene(bgColor[i]);
+flipHourglass();
 
 // fills bottom with sand
 ctx.fillStyle = '#fccf7c';
@@ -19,10 +36,9 @@ ctx.lineTo(145, 182);
 ctx.fill();
 
 
-
-function drawScene() {
+function drawScene(color) {
     // background
-    ctx.fillStyle = '#87fbff';
+    ctx.fillStyle = color;
     ctx.fillRect(0, 0, 300, 300);
 
     // hour glass
@@ -32,7 +48,6 @@ function drawScene() {
     ctx.fillRect(89, 110, 112, -10);
     ctx.fillRect(89, 250, 112, 10);
     ctx.fill();
-
     ctx.beginPath();
     ctx.moveTo(90, 110);
     ctx.lineTo(200, 110);
@@ -42,10 +57,18 @@ function drawScene() {
     ctx.stroke();
     ctx.fillStyle = '#e8feff';
     ctx.fill();
+
+}
+
+function changeBackground() {
+    i = (i+1)%3;
 }
 
 
 function flipHourglass() {
+    // resets sand, cancel previous animation and displays arrows
+    cancelAnimationFrame(animationId);
+    remaining = 12;
     top_x1 = 92;
     top_x2 = 198;
     top_y = 111;
@@ -54,12 +77,12 @@ function flipHourglass() {
     bottom_y = 250;
 
     flipArrows();
-    window.setTimeout(pourSand, 500);
-    
+    setTimeout(pourSand, 500);
 }
 
 function flipArrows() {
-    console.log("flipp");
+    // draws arrows to simulate flipping the hour glass
+    ctx.strokeStyle = 'black';
     ctx.beginPath();
     ctx.moveTo(98, 150);
     ctx.bezierCurveTo(80, 150, 80, 200, 98, 200);
@@ -76,13 +99,13 @@ function flipArrows() {
 }
 
 function pourSand () {
-    requestAnimationFrame(pourSand);
-
+    animationId = requestAnimationFrame(pourSand);
+    remaining -= 0.017;
+    
+    //if top not empty
     if (top_y < 180) {
-        //if top isn't full, move triangle downwards
         ctx.clearRect(0,0, 300, 300);
-        drawScene();
-
+        drawScene(bgColor[i]);
 
         // top sand triangle
         ctx.fillStyle = '#fccf7c';
@@ -99,20 +122,29 @@ function pourSand () {
         ctx.lineTo(bottom_x1, bottom_y);
         ctx.lineTo(bottom_x2, bottom_y);
         ctx.fill();
-        
-        top_x1 += 0.078;
-        top_y +=0.1;
-        top_x2 -= 0.078;
 
+        // increases bottom triangle, decreases top triangle
+        top_x1 += 0.078;;
+        top_y += 0.1;
+        top_x2 -= 0.078;;
+        
         bottom_x1 -= 0.078;
         bottom_x2 += 0.078;
         bottom_y -= 0.1;
         
-        // sand line
+        // timer
+        ctx.fillStyle = 'black';
+        ctx.fillText("Time remaining: " + remaining.toFixed(0), 30, 50);
+
+        // sand pouring line
         ctx.strokeStyle = '#fccf7c';
         ctx.beginPath();
         ctx.moveTo(145, 183);
         ctx.lineTo(145, 250);
         ctx.stroke();
-    } 
+
+    } else {
+        flipHourglass();
+    }
 }
+
