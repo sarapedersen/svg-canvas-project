@@ -1,7 +1,27 @@
+//documentation
+
+
+
+
 // svg-script
+var time = 11;
+var remaining = 12;
 
+function hideSandLine() {
+    $("#sandLine").hide();
+}
+setInterval(function() {
+    $(".arrows").hide();
+    $("#initialSand").hide();
+    $("#sandLine").show();
+    $("#countdown").text("Time remaining: " + remaining.toFixed(0));
+}, 500);
 
+setInterval(function() {
+    $(".arrows").show();
+}, 12000)
 
+hideSandLine();
 
 
 
@@ -65,6 +85,7 @@ function changeBackground() {
 }
 
 
+
 function flipHourglass() {
     // resets sand, cancel previous animation and displays arrows
     cancelAnimationFrame(animationId);
@@ -101,10 +122,11 @@ function flipArrows() {
 function pourSand () {
     animationId = requestAnimationFrame(pourSand);
     remaining -= 0.017;
+
     
     //if top not empty
     if (top_y < 180) {
-        ctx.clearRect(0,0, 300, 300);
+        // ctx.clearRect(0,0, 300, 300);
         drawScene(bgColor[i]);
 
         // top sand triangle
