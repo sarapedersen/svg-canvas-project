@@ -2,8 +2,18 @@
 
 function hideShowDoc() {
     var btnDoc = document.getElementById("btnDoc");
-    btnDoc.innerHTML == "Show documentation" ? btnDoc.innerHTML="Hide documentation" : btnDoc.innerHTML="Show documentation";
+    if (btnDoc.innerHTML == "Show documentation") {
+        btnDoc.innerHTML = "Hide documentation";
+        $("#documentation").show();
+        document.getElementById('documentation').scrollIntoView();
+
+
+    } else {
+        btnDoc.innerHTML="Show documentation";
+        $("#documentation").hide();
+    }
 }
+
 
 // svg-script
 var time = 11;
