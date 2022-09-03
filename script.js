@@ -1,11 +1,14 @@
 //documentation
 
-
-
+function hideShowDoc() {
+    var btnDoc = document.getElementById("btnDoc");
+    btnDoc.innerHTML == "Show documentation" ? btnDoc.innerHTML="Hide documentation" : btnDoc.innerHTML="Show documentation";
+}
 
 // svg-script
 var time = 11;
 var remaining = 12;
+
 
 function hideSandLine() {
     $("#sandLine").hide();
@@ -26,7 +29,7 @@ hideSandLine();
 
 
 // canvas script
-var c = document.getElementById('canvas');
+var c = document.getElementById('myCanvas');
 var ctx = c.getContext("2d");
 c.addEventListener('click', changeBackground);
 
@@ -39,7 +42,7 @@ var bottom_x2 = 91;
 var bottom_y = 250;
 
 var animationId;
-var bgColor = ["#87fbff", "#ff7142", "#95e364"];
+var bgColor = ["#FFE9C4", "#87fbff", "#ff7142", "#95e364"];
 var i = 0;
 
 ctx.lineWidth = 1.5;
@@ -156,7 +159,7 @@ function pourSand () {
         
         // timer
         ctx.fillStyle = 'black';
-        ctx.fillText("Time remaining: " + remaining.toFixed(0), 30, 50);
+        // ctx.fillText("Time remaining: " + remaining.toFixed(0), 30, 50);
 
         // sand pouring line
         ctx.strokeStyle = '#fccf7c';

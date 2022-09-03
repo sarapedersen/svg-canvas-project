@@ -6,44 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    
-
     <title>Project 1</title>
 </head>
 <body>
+<section id="frontpage">
 
-    <h1>Her er en overskrift</h1>
-    <p>Her er litt tekst</p>
+    <div class="right"></div>
+    <p id="galleryName">Twelve seconds of infinity</p>
+    <img id="clock" src="./media/clock2.svg" alt="clock"/>
+    <h1 id="greeting">Welcome to the gallery of twelve seconds</h1>
 
-    <svg class="svg" width="300" height="300">
-        <rect id="svgBackground" x="0" y="0" width="100%" height="100%"></rect>
-        <text id="countdown" x="30" y="50" font-family="Verdana" font-size="25"></text>
-        <polygon  id="hourglass" points="90, 110 200, 110 90, 250 200, 250 90, 110"/>
-        <rect x="89" y="100" width="112" height="10"></rect>
-        <rect x="89" y="250" width="112" height="10"></rect>
-        <polygon id="initialSand" points="91, 250 199, 250 145, 181 145, 181 91, 250"></polygon>
-        
-        <polygon id="topSand" >
-            <animate id="top" attributeName="points" values="91, 111 199, 111 145, 179; 145, 179 145, 179 145, 179" begin="0.5s;top.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
-        </polygon>
-        
-        <polygon id="bottomSand">
-            <animate id="bottom" attributeName="points" values="91, 250 199, 250 199, 250, 91, 250 91, 250; 91, 250 199, 250 145, 181 145, 181 91, 250" begin="0.5s;bottom.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
-        </polygon>
-        
-        <path id="sandLine" d="M 145 182 L 145 250"></path>
-        <path class="arrows" d="M98 150 C 80 150, 80 200, 98 200 M90 147 L98 150 98 157"></path>
-        <path class="arrows" d="M190 150 C 208 150, 208 200, 190 200 M190 190 L190 200 199 204"></path>
-    </svg>
-    
-    <canvas id="canvas" width="300" height="300"></canvas>
-    
-    
-    <p id="interactInfo">Klikk på bildene</p>
 
-    <button id="showDoc">Show documentation</button>
-    <button id="hideDoc">Hide documentation</button>
+</section>
+
+<section id="artwork">
+    <div class="left"></div>
+    <div id="svg">
+        <h1 class="artTitle">SVG</h1>
+        <svg id="svgHourglass" width="300" height="300">
+            <rect id="svgBackground" x="0" y="0" width="100%" height="100%"></rect>
+            <!-- <text id="countdown" x="30" y="50" font-family="Verdana" font-size="25"></text> -->
+            <polygon  id="hourglass" points="90, 110 200, 110 90, 250 200, 250 90, 110"/>
+            <rect x="89" y="100" width="112" height="10"></rect>
+            <rect x="89" y="250" width="112" height="10"></rect>
+            <polygon id="initialSand" points="91, 250 199, 250 145, 181 145, 181 91, 250"></polygon>
+            
+            <polygon id="topSand" >
+                <animate id="top" attributeName="points" values="91, 111 199, 111 145, 179; 145, 179 145, 179 145, 179" begin="0.5s;top.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
+            </polygon>
+            
+            <polygon id="bottomSand">
+                <animate id="bottom" attributeName="points" values="91, 250 199, 250 199, 250, 91, 250 91, 250; 91, 250 199, 250 145, 181 145, 181 91, 250" begin="0.5s;bottom.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
+            </polygon>
+            
+            <path id="sandLine" d="M 145 182 L 145 250"></path>
+            <path class="arrows" d="M98 150 C 80 150, 80 200, 98 200 M90 147 L98 150 98 157"></path>
+            <path class="arrows" d="M190 150 C 208 150, 208 200, 190 200 M190 190 L190 200 199 204"></path>
+        </svg>
+    </div>
+    <div id="canvas">
+        <h1 class="artTitle">CANVAS</h1>
+        <canvas id="myCanvas" width="300" height="300"></canvas>
+    </div>
+
+</section>
+
+<section id="artist">
+    <div class="right"></div>
+    <div id="about">
+        <h1>About the artist</h1>
+        <p>
+            The art displayed on this page is made by a creative young woman.
+            Her work has a modern realistic look and is inspired by observations 
+            from her own life as a student in Trondheim.
+        </p>
+        <p>For practical reasons her identity will be anonymous.</p>
+    </div>
+
+</section>
+
+<section id="documentation">
+    <button id="btnDoc" onclick="hideShowDoc()">Show documentation</button>
+
+</section>
     
     <script type="text/javascript" src="script.js"></script>
 </body>

@@ -1,11 +1,114 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
+#frontpage, #artist, #artwork {
+    background-color: #FFE9C4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 100vh;
 }
 
 
+.right {
+    grid-column: 2;
+    grid-row: 1/4;
+    background-color: #FFC936;
+}
+
+.left {
+    grid-column: 1;
+    grid-row: 1/4;
+    background-color: #FFC936;
+}
+
+/* frontpage */
+
+#clock {
+    grid-column: 2;
+    grid-row: 2;
+    width: 70%;
+    margin: auto;
+}
+
+#galleryName {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 10%;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 10%;
+    color: black;
+}
+
+#greeting {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 60px;
+    color: black;
+    margin: auto;
+    padding-left: 10%;
+}
+
+/* Artwork */
+.artTitle {
+    font-size: 30px;
+    text-align: center;
+}
+
+#svg {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;   
+}
+
+#canvas {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: center;   
+}
+
+
+
+
+
+/* documentation */
+#about {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 70px;
+}
+
+#about > p {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+
+
+#btnDoc {
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    max-width: 160px;
+}
+
+
+/* svg-styling */
+
 #svgBackground {
-    fill: #87fbff;
+    fill: #FFC936;
 }
 
 #hourglass {
@@ -32,17 +135,6 @@
     fill:none;
     stroke-width: 2px;
     stroke: black;
-}
-
-#showDoc, #hideDoc {
-    border: 1px solid;
-    border-radius: 20px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    max-width: 160px;
 }
 
 
