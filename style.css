@@ -13,7 +13,6 @@
     height: 100vh;
 }
 
-
 .right {
     grid-column: 2;
     grid-row: 1/4;
@@ -27,13 +26,6 @@
 }
 
 /* frontpage */
-
-#clock {
-    grid-column: 2;
-    grid-row: 2;
-    width: 70%;
-    margin: auto;
-}
 
 #galleryName {
     grid-column: 1;
@@ -50,6 +42,40 @@
     margin: auto;
     padding: 0% 10% 0% 10%;
 }
+
+#scrollArrow {
+    visibility: hidden;
+}
+
+#clock {
+    grid-column: 2;
+    grid-row: 2;
+    width: 70%;
+    margin: auto;
+}
+
+#clockHands {
+    grid-column: 2;
+    grid-row: 2;
+    margin: auto;
+}
+
+#secHand {
+    animation: tictoc 12s infinite linear;
+    transform-origin: 49% 50%;
+}
+
+@keyframes tictoc {
+    0% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(-18deg);
+    }
+
+}
+
+
 
 /* Artwork */
 .artTitle {
@@ -116,7 +142,7 @@
 }
 
 
-/* svg-styling */
+/* svg hourglass */
 
 #svgBackground {
     fill: #FFC936;
@@ -134,7 +160,6 @@
 
 #initialSand, #topSand, #bottomSand {
     fill: #fccf7c;
-    
 }
 
 #sandLine {
@@ -148,18 +173,26 @@
     stroke: black;
 }
 
-/* for smaller screens */
+/* responsive styling */
 
-@media (max-width: 550px) {
-    #frontpage, #artist, #artwork {
+
+@media (max-width: 590px) {
+    body {
+        background-color: #FFE9C4;
+    }
+   
+    #frontpage {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
     }
-    .left, .right {
-        display: none;
+
+    #artist, #artwork {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
     }
 
-    #clock {
+    
+    .left, .right, #clock, #clockHands {
         display: none;
     }
     
@@ -180,6 +213,14 @@
         padding: 5% 10%;
     }
     
+    #scrollArrow {
+        visibility: visible;
+        grid-column: 1;
+        grid-row: 3;
+        margin: auto;
+        color: black;
+    }
+
     /* Artwork */
     .artTitle {
         font-size: 30px;
@@ -188,33 +229,46 @@
     
     #svg {
         grid-column: 1;
-        grid-row: 2;
+        grid-row: 1;
         justify-self: center;   
+        margin-bottom: 15%;
+        border: 2px solid black;
+        padding: 15px;
+    }
+
+    #svgBackground {
+        fill: #FFE9C4;
     }
     
     #canvas {
-        grid-column: 2;
-        grid-row: 2;
-        justify-self: center;   
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: center;  
+        border: 2px solid black; 
+        padding: 15px;
     }
     
     
     /* Artist */
-    #avatar {
-        grid-column: 2;
-        grid-row: 2;
-        width: 40%;
-        justify-self: center; 
-        margin: auto;
-    }
-    
     #about {
         grid-column: 1;
-        grid-row: 2;
-        display: flex;
-        flex-direction: column;
-        padding: 10%;
+        grid-row: 1;
+        padding: 15%;
+        margin: 40% 5% 0% 5%;
     }
+    
+    #avatar {
+        grid-column: 1;
+        grid-row: 2;
+        width: 30%;
+        margin-bottom: 10%;
+    }
+
+    #btnDoc {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
 }
 
 
