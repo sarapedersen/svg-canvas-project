@@ -183,100 +183,41 @@
 
 
 @media (max-width: 590px) {
-    body {
-        background-color: #FFE9C4;
-    }
-   
     #frontpage {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 2fr 1fr;
     }
 
-    #artist, #artwork {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-    }
-
-    
-    .left, .right, #clock, #clockHands {
-        display: none;
-    }
-    
     #galleryName {
-        grid-column: 1;
         grid-row: 1;
-        padding: 10% 0% 0% 10%;
-        font-size: 3vw;
-        font-weight: bold;
-    }
-    
-    #greeting {
-        grid-column: 1;
-        grid-row: 2;
-        font-size: 10vw;
-        color: black;
-        margin: auto;
-        padding: 5% 10%;
-    }
-    
-    #scrollArrow {
-        visibility: visible;
-        grid-column: 1;
-        grid-row: 3;
-        margin: auto;
-        color: black;
+        font-size: 1em;
     }
 
-    /* Artwork */
-    .artTitle {
-        font-size: 30px;
-        text-align: center;
+    #greeting {
+        grid-row: 2;
+        font-size: 4em;
+    }
+
+    #scrollArrow {
+        grid-row: 3;
+        visibility: visible;
+        cursor: pointer;
+        margin: auto;
+        color: black;
     }
     
-    #svg {
-        grid-column: 1;
-        grid-row: 1;
-        justify-self: center;   
-        margin-bottom: 15%;
-        border: 2px solid black;
-        border-radius: 15%;
-        padding: 15px;
+    #artist, #artwork {
+        display: flex;
+        flex-direction: column;
     }
 
     #svgBackground {
         fill: #FFE9C4;
     }
-    
-    #canvas {
-        grid-column: 1;
-        grid-row: 3;
-        justify-self: center;  
-        border: 2px solid black; 
-        border-radius: 15%;
-        padding: 15px;
-    }
-    
-    
-    /* Artist */
-    #about {
-        grid-column: 1;
-        grid-row: 1;
-        padding: 15%;
-        margin: 40% 5% 0% 5%;
-    }
-    
-    #avatar {
-        grid-column: 1;
-        grid-row: 2;
-        width: 30%;
-        margin-bottom: 10%;
-    }
 
-    #btnDoc {
-        grid-column: 1;
-        grid-row: 3;
+    .left, .right, #clock, #clockHands {
+        display: none;
     }
-    
 }
 
 
