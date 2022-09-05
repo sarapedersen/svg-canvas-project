@@ -13,8 +13,8 @@
 
         <div class="right"></div>
         <p id="galleryName">Twelve seconds of infinity</p>
-        <svg id="clockHands" width="70%" height="450">
-            <rect id="secHand" x="49%" y="50%" width="17vw" height="0.5vw"></rect>
+        <svg id="clockHands" width="70%" height="100%">
+            <rect id="secHand" x="49%" y="50%" width="50%" height="0.5vw"></rect>
         </svg>
 
         <img id="clock" src="./media/clock.svg" alt="clock"/>
@@ -36,16 +36,16 @@
                 <polygon  id="hourglass" points="90, 110 200, 110 90, 250 200, 250 90, 110"/>
                 <rect x="89" y="100" width="112" height="10"/>
                 <rect x="89" y="250" width="112" height="10"/>
-                <polygon id="initialSand" points="91, 250 199, 250 145, 181 145, 181 91, 250"/>
-                <polygon id="topSand">
+                <polygon id="initialSand" class="sand" points="91, 250 199, 250 145, 181 145, 181 91, 250"/>
+                <polygon id="topSand"  class="sand">
                     <animate id="top" attributeName="points" values="91, 111 199, 111 145, 179; 145, 179 145, 179 145, 179" begin="0.5s;top.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
                 </polygon>
                 
-                <polygon id="bottomSand">
+                <polygon id="bottomSand"  class="sand">
                     <animate id="bottom" attributeName="points" values="91, 250 199, 250 199, 250, 91, 250 91, 250; 91, 250 199, 250 145, 181 145, 181 91, 250" begin="0.5s;bottom.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
                 </polygon>
                 
-                <path id="sandLine" d="M 145 182 L 145 250"/>
+                <path id="sandLine"  class="sand" d="M 145 182 L 145 250"/>
                 <path class="arrows" d="M98 150 C 80 150, 80 200, 98 200 M90 147 L98 150 98 157"/>
                 <path class="arrows" d="M190 150 C 208 150, 208 200, 190 200 M190 190 L190 200 199 204"/>
             </svg>

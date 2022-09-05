@@ -52,12 +52,14 @@
     grid-row: 2;
     width: 70%;
     margin: auto;
+    max-width: 850px;
 }
 
 #clockHands {
     grid-column: 2;
     grid-row: 2;
     margin: auto;
+    max-width: 850px;
 }
 
 #secHand {
@@ -81,18 +83,21 @@
 .artTitle {
     font-size: 30px;
     text-align: center;
+    user-select: none;
 }
 
 #svg {
     grid-column: 1;
     grid-row: 2;
     justify-self: center;   
+    margin:auto;
 }
 
 #canvas {
     grid-column: 2;
     grid-row: 2;
-    justify-self: center;   
+    justify-self: center;  
+    margin:auto; 
 }
 
 
@@ -101,6 +106,7 @@
     grid-column: 2;
     grid-row: 2;
     width: 40%;
+    max-width: 500px;
     justify-self: center; 
     margin: auto;
 }
@@ -111,10 +117,10 @@
     display: flex;
     flex-direction: column;
     padding: 10%;
+    font-size: 1.7em;
 }
 
 #about > p {
-    font-size: 20px;
     margin-top: 20px;
 }
 
@@ -142,7 +148,7 @@
 }
 
 
-/* svg hourglass */
+/* hourglass styling */
 
 #svgBackground {
     fill: #FFC936;
@@ -154,13 +160,9 @@
     stroke-width: 1px;
 }
 
-#interactInfo {
-    user-select: none;
-}
-
-#initialSand, #topSand, #bottomSand {
+#topSand, #bottomSand, #initialSand {
     fill: #fccf7c;
-}
+} 
 
 #sandLine {
     stroke: #fccf7c;
@@ -171,6 +173,10 @@
     fill:none;
     stroke-width: 2px;
     stroke: black;
+}
+
+#svgHourglass, #myCanvas {
+    cursor: pointer;
 }
 
 /* responsive styling */
@@ -233,6 +239,7 @@
         justify-self: center;   
         margin-bottom: 15%;
         border: 2px solid black;
+        border-radius: 15%;
         padding: 15px;
     }
 
@@ -245,6 +252,7 @@
         grid-row: 3;
         justify-self: center;  
         border: 2px solid black; 
+        border-radius: 15%;
         padding: 15px;
     }
     
