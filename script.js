@@ -19,17 +19,13 @@ function hideShowDoc() {
 var i = 0;
 var colors = ["#fccf7c","#912641", "#4b056e"];
 
-$("#svg").click(function() {
-    changeSvgColor();
-    $("#sandLine").css({stroke: colors[i]});
-    $("#topSand").css({fill: colors[i]});
-    $("#bottomSand").css({fill: colors[i]});
-});
+$(".sand, #hourglass").click(changeSvgColor);
 
 function changeSvgColor() {
-    i = (i+1)&3;
+    i = (i+1) % colors.length;
+    $("#sandLine").css({stroke: colors[i]});
+    $("#topSand, #bottomSand").css({fill: colors[i]});
 }
-
 
 function hideSandLine() {
     $("#sandLine").hide();
@@ -53,10 +49,10 @@ var c = document.getElementById('myCanvas');
 var ctx = c.getContext("2d");
 c.addEventListener('click', changeCanvasColor);
 
-var top_x1 = 92;
+var top_x1 = 91;
 var top_x2 = 198;
 var top_y = 111;
-var bottom_x1 = 199;
+var bottom_x1 = 198;
 var bottom_x2 = 91;
 var bottom_y = 250;
 
@@ -72,7 +68,7 @@ flipHourglass();
 ctx.fillStyle = '#fccf7c';
 ctx.beginPath();
 ctx.moveTo(91, 250);
-ctx.lineTo(199, 250);
+ctx.lineTo(198, 250);
 ctx.lineTo(145, 182);
 ctx.fill();
 
@@ -102,7 +98,7 @@ function drawScene() {
 }
 
 function changeCanvasColor() {
-    j = (j+1)%3;
+    j = (j+1) % colors.length;
 }
 
 
@@ -110,9 +106,8 @@ function changeCanvasColor() {
 function flipHourglass() {
     // resets sand, cancel previous animation and displays arrows
     cancelAnimationFrame(animationId);
-    remaining = 12;
-    top_x1 = 92;
-    top_x2 = 198;
+    top_x1 = 91;
+    top_x2 = 199;
     top_y = 111;
     bottom_x1 = 199;
     bottom_x2 = 91;
@@ -140,7 +135,7 @@ function flipArrows() {
     ctx.stroke();
 }
 
-function drawHourglass(sandColor) {
+function drawSand(sandColor) {
     // top sand triangle
     ctx.fillStyle = sandColor;
     ctx.beginPath();
@@ -149,7 +144,7 @@ function drawHourglass(sandColor) {
     ctx.lineTo(145, 178);
     ctx.fill();
 
-    // bottom sand triangle
+    // bottom sand
     ctx.beginPath();
     ctx.moveTo(91, 250);
     ctx.lineTo(199, 250);
@@ -172,7 +167,7 @@ function pourSand () {
     if (top_y < 180) {
         // ctx.clearRect(0,0, 300, 300);
         drawScene();
-        drawHourglass(colors[j]);
+        drawSand(colors[j]);
 
         // increases bottom triangle, decreases top triangle
         top_x1 += 0.078;;
@@ -185,5 +180,22 @@ function pourSand () {
     } else {
         flipHourglass();
     }
+
+    function handleClick(e) {
+        var mouseX = parseInt(e.clientX);
+        var mouseY = parseInt(e.clientY);
+        var svg = document.getElementById("svg")
+        var svgX = svg.getBoundingClientRect().left;
+        var svgY = svg.getBoundingClientRect().top;
+        // console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
+        // console.log(mouseX - svgX);
+
+        // if ((mouseX - svgX > 91 && mouseX-svgX < 200) && (mouseY - svgY )) {
+        //     console.log("inside X");
+        // }
+
+    }
+
+    $("#myCanvas").mousedown(function(e) {handleClick(e);})
 }
 

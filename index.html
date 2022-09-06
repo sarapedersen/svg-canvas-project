@@ -37,18 +37,19 @@
                 <rect x="89" y="250" width="112" height="10"/>
                 <polygon id="initialSand" class="sand" points="91, 250 199, 250 145, 181 145, 181 91, 250"/>
                 <polygon id="topSand"  class="sand">
-                    <animate id="top" attributeName="points" values="91, 111 199, 111 145, 179; 145, 179 145, 179 145, 179" begin="0.5s;top.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
+                    <animate id="top" attributeName="points" values="91, 111 199, 111 145, 179; 145, 179 145, 179 145, 179" begin="0.5s;top.end" dur="12s" repeatCount="indefinite"></animate>
                 </polygon>
                 
                 <polygon id="bottomSand"  class="sand">
-                    <animate id="bottom" attributeName="points" values="91, 250 199, 250 199, 250, 91, 250 91, 250; 91, 250 199, 250 145, 181 145, 181 91, 250" begin="0.5s;bottom.end+0.5s" dur="12s" repeatCount="indefinite"></animate>
+                    <animate id="bottom" attributeName="points" values="91, 250 199, 250 199, 250, 91, 250 91, 250; 91, 250 199, 250 145, 181 145, 181 91, 250" begin="0.5s;bottom.end" dur="12s" repeatCount="indefinite"></animate>
                 </polygon>
                 
-                <path id="sandLine"  class="sand" d="M 145 182 L 145 250"/>
+                <path id="sandLine"  class="sand" d="M 145 182 L 145 249"/>
                 <path class="arrows" d="M98 150 C 80 150, 80 200, 98 200 M90 147 L98 150 98 157"/>
                 <path class="arrows" d="M190 150 C 208 150, 208 200, 190 200 M190 190 L190 200 199 204"/>
             </svg>
         </div>
+        
         <div id="canvas">
             <h1 class="artTitle">CANVAS</h1>
             <canvas id="myCanvas" width="285" height="300"></canvas>
@@ -77,13 +78,69 @@
         <div class="left"></div>
         <h1>Dokumentasjon</h1><br>
         <p>
-            Dokumentasjonen skal diskutere og forklare dine valg og løsninger (500-1000 ord er en fornuftig lengde men kravet er at du dokumenterer det under, ikke at du skriver N antall ord). 
-            Gi en beskrivelser av hvordan du har brukt CSS-grid og Flexbox-layout, forklar dine valg. 
-            Gi en beskrivelse av hvordan du har brukt HTML canvas og SVG i HTML. 
-            Gi en kort beskrivelse av hvordan du har brukt jQuery.
-            Gi en kort beskrivelse av hvordan du har utført cross-browser testing. 
-            List opp de viktigste (mest nyttige) informasjonskildene du har brukt (tutorials, websider, bøker).
-            Husk å oppgi kilder hvis du gjenbruker kodesnutter. 
+            <h3>Layout</h3>
+            <p>På dennen nettsiden har jeg valgt å bruke CSS-grid for å ha kontroll over sidens layout. Tanken bak valget var at 
+            CSS-grid gjør det enkelt å plassere elementer på spesifikke plasser på siden. Dette var en fordel for meg ettersom 
+            at jeg på forhånd hadde laget en skisse over hvordan jeg ønsket å ha layouten, så ved å bruke grid kunne jeg enkelt 
+            plassere alle elementene akkurat hvor jeg ønsket, istedenfor å måtte bruke mye tid på margin-justeringer. Med tanke 
+            på responsivitet så ga grid-layouten mindre mening når sidebredden kom under et visst punkt, og jeg valgte å benytte meg
+            av flexbox for å håndtere dette. Ved å bruke flexbox var det enkelt å justere slik at alle elementene
+            kom etter hverandre, ettesom at det hovedsaklig bare skulle sentreres (med unntak av forsiden som fortsatt skulle beholde
+            et gjenkjennelig design og jeg valgte å beholde grid her, for å gjøre det lettere å plassere).</p>
+
+
+            <h3>Canvas og SVG</h3> 
+            <p>På denne siden har jeg lagd et timeglass i canvas og svg. Med SVG har jeg brukt rektangler for å lage toppen og bunnen av timeglasset, 
+            og et polygon element for å tegne opp glasset. For å simulere at sanden i glasset renner nedover har jeg brukt enda et polygon
+            hvor det er lagt inn en svg-animasjon som sakte forflytter de to øverste punktene nedover og inn mot midten av timeglasset, helt til det er "tomt".
+            Samtidig forstørres et polygon i bunnen av glasset på samme måte ved at de to øverste punktene forflyttes oppover og inn mot midten. I tillegg 
+            har jeg lagt inn en rett strek nedover i den nederste delen av glasset som skal illustrere sanden som renner gjennom, ved hjelp av svg-elementet 
+            path. Når sanden har "rent gjennom" vil animasjonen vente et halvt sekund, hvor et par piler kommer til syne som illustrerer at glasset
+            roterer. Disse er lagd som en path med bezier kurve, samt et par ekstra punkter som danner pilspissen. Deretter starter animasjonen på nytt, og
+            fortsetter slik uten stopp. Helt i starten av animasjonen vises også en figur ved navn "initialSand" som er ment for å fylle inn bunnen med
+            sand slik at timeglasset aldri er helt tomt. <br><br>
+
+            Øverst på siden er det også en klokke hvor viseren er lagd med svg. Dette er ikke egentlig en del av oppgavebeskrivelsen men ble lagd for å 
+            lage et mer gjennomført tema på siden. Her er viseren lagd med et rektangel som roteres rundt et punkt i midten av klokka. SVGen er også
+            gjort responsiv slik at viseren alltid passer til klokkens størrelse når siden sidebredden justeres. <br><br>
+
+            I canvas benytter jeg javascript hvor har jeg en funksjon drawScene() som tegner opp bakgrunnen og timeglasset ved hjelp av canvasfunksjonene fillRect()
+            som lager et rektangel og moveTo() og lineTo() for å tegne streker. Likt som i svg-tegningen bruker jeg også her rektangler i toppen og bunnen av timeglasset, 
+            tegner opp resten av timeglasset med streker som fylles igjen, og har en form i toppen som blir mindre og en form i bunnen som blir større helt til "sanden" 
+            har rent gjennom. Har også her en strek som illustrerer sanden som renner gjennom. Disse tre sand-elementene tegnes i en funksjon kalt drawSand(), for at 
+            fargen på sanden skal kunne endres ved at man sender inn en farge i funksjonen. Selve animasjonen av timeglasset ligger i funksjonen pourSand().
+            Her bruker jeg requestAnimationFrame som kaller på funksjonen pourSand igjen hvor x og y-verdiene for sanden i toppen og bunnen endres for 
+            hver gang funksjonen blir kalt. På denne måten virker det som om figurene blir mindre og større. Jeg har også her en funksjon flipArrows() som 
+            tegner opp de samme pilene som i svg-tegningen. Her er det også benyttet en bezierkurve for å lage buen av pilen og et par streker for å danne pilspissen. 
+            Timingen av animasjonen fungerer likt som i svg, men her er det benyttet setInterval hvor det er lagt inn en delay. Når animasjonen er ferdig kalles funksjonen 
+            flipHourglass() som resetter animasjonen ved å justere tilbake alle sand-punktene, kaller på flipArrows() og kaller på pourSand() etter et halvt sekund ved bruk av 
+            seTimeout(). <br><br>
+
+            For å endre på sand-fargen i både svg og canvas har jeg to funksjoner changeCanvasColor() og changeSvgColor() som benytter en teller (i eller j) for å kunne iterere
+            gjennom en liste med farger. Funksjonene inkrementerer telleren og bruker modulo for å unngå at telleren overstiger lengden på listen av farger. I changeSvgColor() 
+            er det også her fill/stroke fargen på sanden settes til den valgte fargen. I canvas skjer dette som nevnt gjennom drawSand().</p>
+
+            <h3>JQuery</h3>
+            <p>Jeg har brukt Jquery for å enklere referere til spesifikke HTML-elementer og for gjøre små endringer som å skifte fill farge 
+            på svg-figurer eller skjule/vise elementer. JQuery gjorde det også enkelt å legge til en click event på en hel klasse av 
+            elementer ( i mitt tilfelle "sand" klassen), istedenfor å måtte referere hvert enkelt element i klassen. </p>
+
+
+            <h3>Cross-browser testing</h3> 
+            <p>For cross-browser testing benyttet jeg chrome, microsoft edge og safari for å se om siden oppførte seg likt på tvers av nettleserne. Her gikk jeg nøye gjennom siden
+            og testet interaksjonene, responsivitet gjennom nettlesernes utviklerverktøy og fulgte med på animasjoenne for å kontrollere at alt var som det skulle. </p>
+
+
+
+            <h3>Informasjonskilder</h3>
+            <ul>
+                <li>w3schools.com</li>
+                <li>css-tricks.com </li>
+                <li>jquery.com</li>
+                <li>developer.mozilla.org</li>
+                <li>stackoverflow.com</li>
+            </ul>
+
         </p>
 
     </section>

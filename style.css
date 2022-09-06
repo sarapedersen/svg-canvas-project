@@ -114,10 +114,8 @@
 #about {
     grid-column: 1;
     grid-row: 2;
-    display: flex;
-    flex-direction: column;
     padding: 10%;
-    font-size: 1.7em;
+    font-size: 1.3em;
 }
 
 #about > p {
@@ -129,6 +127,16 @@
 #documentation {
     display: none;
     padding: 10%;
+}
+
+
+
+#documentation > p {
+    padding: 13px 0px;
+}
+
+#documentation > ul {
+    padding-left: 20px;
 }
 
 #btnDoc {
@@ -209,6 +217,7 @@
     #artist, #artwork {
         display: flex;
         flex-direction: column;
+        padding-bottom: 10%;
     }
 
     #svgBackground {
