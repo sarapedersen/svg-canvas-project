@@ -19,7 +19,7 @@ function hideShowDoc() {
 var i = 0;
 var colors = ["#fccf7c","#912641", "#4b056e"];
 
-$(".sand, #hourglass").click(changeSvgColor);
+$("#svg").click(changeSvgColor);
 
 function changeSvgColor() {
     i = (i+1) % colors.length;
@@ -187,12 +187,10 @@ function pourSand () {
         var svg = document.getElementById("svg")
         var svgX = svg.getBoundingClientRect().left;
         var svgY = svg.getBoundingClientRect().top;
-        // console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
-        // console.log(mouseX - svgX);
+        console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
+        console.log(mouseX - svgX);
 
-        // if ((mouseX - svgX > 91 && mouseX-svgX < 200) && (mouseY - svgY )) {
-        //     console.log("inside X");
-        // }
+        
 
     }
 
